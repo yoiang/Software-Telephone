@@ -1,0 +1,6 @@
+- rather than plugin determining result file (.wav), should be based on Process step number
+- add configuration dialogs for all plugins
+- re-add Julian, configure Julian properly
+- add all necessary configuration to config file, more formalized (<plugin_name>.<item>)
+- better result output in main dialog including links to result files
+- remove FreeTTS' need for silly swapped overriden runApplication() through redesign on mApplicationLocation and configure()
