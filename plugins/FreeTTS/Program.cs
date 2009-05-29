@@ -1,66 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace FreeTTS
 {
-    public class Program
+    class FreeTTSPlugin : SoftwareTelephone.PluginApplication
     {
-    }
-    /*
-    public class FreeTTS : TextToSpeech
-    {
-        protected string mFreeTTSLocation;
-        public FreeTTS(string setJavaLocation, string setFreeTTSLocation)
-            : base("FreeTTS", setJavaLocation, "FreeTTS.wav")
+        protected string mJavaLocation;
+
+        public override string ToString() { return "FreeTTS"; }
+        public override string DefaultApplicationFileName() { return "freetts.jar"; }
+        public override string getInputType() { return "Text"; }
+        public override string getOutputType() { return "Wav"; }
+
+        public FreeTTSPlugin()
         {
-            mFreeTTSLocation = setFreeTTSLocation;
+            mOutput = "FreeTTS.wav";
         }
 
-        public static FreeTTS doConfigure(bool forceReconfigure)
+        public override void configure(SoftwareTelephone.IConfig Config, bool forceReconfigure)
         {
-            string JavaLocation = Program.getSavedConfigurationInformation("JavaLocation");
-            if (forceReconfigure || JavaLocation.Length == 0)
+            mJavaLocation = Config.getSavedConfigurationInformation(ToString() + ".JavaLocation");
+            if (forceReconfigure || mJavaLocation.Length == 0)
             {
                 System.Windows.Forms.OpenFileDialog selectJava = new System.Windows.Forms.OpenFileDialog();
                 selectJava.DefaultExt = "exe";
                 selectJava.Filter = "Java|java.exe|All files|*.*";
                 selectJava.Title = "Select Java executable...";
-                if ( selectJava.ShowDialog() == System.Windows.Forms.DialogResult.OK )
+                if (selectJava.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Program.setSavedConfigurationInformation("JavaLocation", selectJava.FileName );
-                    JavaLocation = selectJava.FileName;
-                } else
-                {
-                    return null;
+                    Config.setSavedConfigurationInformation(ToString() + ".JavaLocation", selectJava.FileName);
+                    mJavaLocation = selectJava.FileName;
                 }
             }
 
-            string FreeTTSLocation = Program.getSavedConfigurationInformation("FreeTTSLocation");
-            if(FreeTTSLocation.Length == 0)
-            {
-                System.Windows.Forms.OpenFileDialog selectFreeTTS = new System.Windows.Forms.OpenFileDialog();
-                selectFreeTTS.DefaultExt = "exe";
-                selectFreeTTS.Filter = "FreeTTS|freetts.jar|All files|*.*";
-                selectFreeTTS.Title = "Select FreeTTS executable...";
-                if (selectFreeTTS.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    Program.setSavedConfigurationInformation("FreeTTSLocation", selectFreeTTS.FileName);
-                    FreeTTSLocation = selectFreeTTS.FileName;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            return new FreeTTS(JavaLocation, FreeTTSLocation);
+            base.configure(Config, forceReconfigure);
         }
 
-        public override string buildParameters(string Input )
+        protected override void runApplication()
         {
-            System.IO.File.Delete(mOutputLocation);
-            return "-jar " + mFreeTTSLocation + " -dumpAudio " + mOutputLocation + " -text " + Input;
+            System.Diagnostics.Process runApplication = new System.Diagnostics.Process();
+            runApplication.StartInfo = new System.Diagnostics.ProcessStartInfo(mJavaLocation, buildParameters(Input));
+            runApplication.StartInfo.UseShellExecute = false;
+            try
+            {
+                runApplication.Start();
+                runApplication.WaitForExit();
+            }
+            catch (Exception E)
+            {
+                System.Windows.Forms.MessageBox.Show(E.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
-    }*/
+
+        protected override string buildParameters(string Input)
+        {
+            System.IO.File.Delete(mOutput);
+            return "-jar " + mApplicationLocation + " -dumpAudio " + mOutput + " -text " + Input;
+        }
+    }
 }

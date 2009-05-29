@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoftwareTelephone
 {/*
-    abstract public class TextToSpeech : SupportApplication
+    abstract public class TextToSpeech : PluginApplication
     {
         protected string mOutputLocation;
         public TextToSpeech(string setName, string setApplicationLocation, string setOutputLocation)

@@ -19,25 +19,31 @@ namespace dotNetSpeech
         public string getInputType() { return "Text"; }
         public string getOutputType() { return "Wav"; }
 
+        SpeechSynthesizer mSpeechSynthesizer;
+
         public dotNetSpeechPlugin()
         {
             mOutput = "dotNet.wav";
+            mSpeechSynthesizer = new SpeechSynthesizer();
         }
 
         public void configure(SoftwareTelephone.IConfig Config)
         {
+            configure(Config, false);
         }
         public void configure(SoftwareTelephone.IConfig Config, bool forceReconfigure)
         {
+            Configure Configure = new Configure( mSpeechSynthesizer );
+            Configure.ShowDialog();
         }
 
         protected void encode()
         {
             System.IO.File.Delete(mOutput);
-            SpeechSynthesizer SpeechSynthesizer = new SpeechSynthesizer();
+
             System.IO.FileStream writeWavFile = new System.IO.FileStream(mOutput, System.IO.FileMode.Create);
-            SpeechSynthesizer.SetOutputToWaveStream(writeWavFile);
-            SpeechSynthesizer.Speak(Input);
+            mSpeechSynthesizer.SetOutputToWaveStream(writeWavFile);
+            mSpeechSynthesizer.Speak(Input);
             writeWavFile.Close();
         }
     }
