@@ -4,3 +4,6 @@
 - add all necessary configuration to config file, more formalized (<plugin_name>.<item>)
 - better result output in main dialog including links to result files
 - remove FreeTTS' need for silly swapped overriden runApplication() through redesign on mApplicationLocation and configure()
+- change dotNetSpeech to dotNetSpeak before people have a grammatical cow?
+- icons?
+- investigate need for seperate PluginShared DLL3
