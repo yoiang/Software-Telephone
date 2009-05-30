@@ -47,12 +47,11 @@ namespace SoftwareTelephone
                         {
                             mPlugins.Add((IPlugin)Activator.CreateInstance(availableType));
                         }
-
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -66,8 +65,6 @@ namespace SoftwareTelephone
             bStartWithSpeech.Checked = false;
             StartWithSpeechFile.Enabled = false;
             browseStartWithSpeechFile.Enabled = false;
-
-            ProcessList.Items.Clear();
         }
 
         private void clickbStartWithSpeech(object sender, EventArgs e)
@@ -79,8 +76,6 @@ namespace SoftwareTelephone
 
             bStartWithText.Checked = false;
             StartWithText.Enabled = false;
-
-            ProcessList.Items.Clear();
         }
 
         private void clickStartWithSpeechFile(object sender, EventArgs e)
@@ -108,7 +103,7 @@ namespace SoftwareTelephone
 
         private void clickPlay(object sender, EventArgs e)
         {
-            TempLog.Text = "";
+            ResultBox.Text = "";
             string Input;
             if (bStartWithSpeech.Checked)
             {
@@ -119,13 +114,24 @@ namespace SoftwareTelephone
                 Input = StartWithText.Text;
             }
 
-            TempLog.Text += Input;
+            ResultBox.Text += Input;
             foreach (IPlugin Process in ProcessList.Items)
             {
-                TempLog.Text += " -> " + Process.ToString();
+                ResultBox.Text += " -> " + Process.ToString();
+
                 Process.Input = Input;
+
+                TempLog.Text += "\n" + Process.Output;
+                if (Process.getOutputType() == "Wav")
+                {
+                    ResultBox.Text += "\nfile://" + System.IO.Directory.GetCurrentDirectory() + "\\" + Process.Output;
+                }
+                else if (Process.getOutputType() == "Text")
+                {
+                    ResultBox.Text += "\n" + Process.Output;
+                }
+
                 Input = Process.Output;
-                TempLog.Text += " -> " + Input;
             }
         }
 

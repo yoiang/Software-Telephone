@@ -35,18 +35,18 @@
             this.StartWithText = new System.Windows.Forms.TextBox();
             this.bStartWithSpeech = new System.Windows.Forms.RadioButton();
             this.bStartWithText = new System.Windows.Forms.RadioButton();
-            this.ProcessList = new ProcessListBox();
+            this.ProcessList = new System.Windows.Forms.ListBox();
             this.removeProcess = new System.Windows.Forms.Button();
             this.addProccess = new System.Windows.Forms.Button();
             this.TempLog = new System.Windows.Forms.TextBox();
+            this.ResultBox = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(197, 347);
+            this.button1.Location = new System.Drawing.Point(197, 445);
             this.button1.MaximumSize = new System.Drawing.Size(84, 23);
             this.button1.MinimumSize = new System.Drawing.Size(84, 23);
             this.button1.Name = "button1";
@@ -133,13 +133,13 @@
             this.ProcessList.FormattingEnabled = true;
             this.ProcessList.Location = new System.Drawing.Point(13, 134);
             this.ProcessList.Name = "ProcessList";
-            this.ProcessList.Size = new System.Drawing.Size(253, 210);
+            this.ProcessList.Size = new System.Drawing.Size(153, 210);
             this.ProcessList.TabIndex = 4;
             // 
             // removeProcess
             // 
             this.removeProcess.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.removeProcess.Location = new System.Drawing.Point(439, 344);
+            this.removeProcess.Location = new System.Drawing.Point(143, 344);
             this.removeProcess.Name = "removeProcess";
             this.removeProcess.Size = new System.Drawing.Size(23, 23);
             this.removeProcess.TabIndex = 5;
@@ -150,7 +150,7 @@
             // addProccess
             // 
             this.addProccess.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addProccess.Location = new System.Drawing.Point(417, 344);
+            this.addProccess.Location = new System.Drawing.Point(121, 344);
             this.addProccess.Name = "addProccess";
             this.addProccess.Size = new System.Drawing.Size(23, 23);
             this.addProccess.TabIndex = 6;
@@ -160,17 +160,27 @@
             // 
             // TempLog
             // 
-            this.TempLog.Location = new System.Drawing.Point(323, 133);
+            this.TempLog.Location = new System.Drawing.Point(12, 373);
             this.TempLog.Multiline = true;
             this.TempLog.Name = "TempLog";
-            this.TempLog.Size = new System.Drawing.Size(136, 198);
+            this.TempLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TempLog.Size = new System.Drawing.Size(454, 66);
             this.TempLog.TabIndex = 7;
+            // 
+            // ResultBox
+            // 
+            this.ResultBox.Location = new System.Drawing.Point(173, 134);
+            this.ResultBox.Name = "ResultBox";
+            this.ResultBox.Size = new System.Drawing.Size(293, 210);
+            this.ResultBox.TabIndex = 8;
+            this.ResultBox.Text = "";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 374);
+            this.ClientSize = new System.Drawing.Size(478, 475);
+            this.Controls.Add(this.ResultBox);
             this.Controls.Add(this.TempLog);
             this.Controls.Add(this.addProccess);
             this.Controls.Add(this.removeProcess);
@@ -195,10 +205,11 @@
         private System.Windows.Forms.TextBox StartWithText;
         private System.Windows.Forms.Button browseStartWithSpeechFile;
         private System.Windows.Forms.TextBox StartWithSpeechFile;
-        private ProcessListBox ProcessList;
+        private System.Windows.Forms.ListBox ProcessList;
         private System.Windows.Forms.Button removeProcess;
         private System.Windows.Forms.Button addProccess;
         private System.Windows.Forms.TextBox TempLog;
+        private System.Windows.Forms.RichTextBox ResultBox;
     }
 }
 
