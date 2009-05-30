@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.FromList = new System.Windows.Forms.ComboBox();
             this.ToList = new System.Windows.Forms.ComboBox();
+            this.FromList = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,14 +52,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Languages";
             // 
-            // label1
+            // ToList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "From:";
+            this.ToList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ToList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ToList.FormattingEnabled = true;
+            this.ToList.Location = new System.Drawing.Point(165, 37);
+            this.ToList.Name = "ToList";
+            this.ToList.Size = new System.Drawing.Size(121, 21);
+            this.ToList.TabIndex = 3;
+            // 
+            // FromList
+            // 
+            this.FromList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.FromList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.FromList.FormattingEnabled = true;
+            this.FromList.Location = new System.Drawing.Point(10, 37);
+            this.FromList.Name = "FromList";
+            this.FromList.Size = new System.Drawing.Size(121, 21);
+            this.FromList.TabIndex = 2;
             // 
             // label2
             // 
@@ -70,21 +81,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "To:";
             // 
-            // FromList
+            // label1
             // 
-            this.FromList.FormattingEnabled = true;
-            this.FromList.Location = new System.Drawing.Point(10, 37);
-            this.FromList.Name = "FromList";
-            this.FromList.Size = new System.Drawing.Size(121, 21);
-            this.FromList.TabIndex = 2;
-            // 
-            // ToList
-            // 
-            this.ToList.FormattingEnabled = true;
-            this.ToList.Location = new System.Drawing.Point(165, 37);
-            this.ToList.Name = "ToList";
-            this.ToList.Size = new System.Drawing.Size(121, 21);
-            this.ToList.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "From:";
             // 
             // OkButton
             // 
