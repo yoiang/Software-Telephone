@@ -39,5 +39,22 @@ namespace SoftwareTelephone
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Enter)
+            {
+                Ok_Click(sender, e);
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.Escape)
+            {
+                Cancel_Click(sender, e);
+            }
+        }
+
+        private void PluginList_onKeyDown(object sender, KeyEventArgs e)
+        {
+            onKeyDown(sender, e);
+        }
     }
 }
