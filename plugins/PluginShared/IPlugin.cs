@@ -35,7 +35,7 @@ namespace SoftwareTelephone
         public virtual void configure(IConfig Config, bool forceReconfigure)
         {
             mApplicationLocation = Config.getSavedConfigurationInformation(ToString() + ".Location");
-            if (forceReconfigure || mApplicationLocation.Length == 0)
+            if (forceReconfigure || mApplicationLocation.Length == 0 || !System.IO.File.Exists( mApplicationLocation ))
             {
                 System.Windows.Forms.OpenFileDialog selecteSpeak = new System.Windows.Forms.OpenFileDialog();
                 selecteSpeak.DefaultExt = "exe";
