@@ -1,3 +1,4 @@
+- more controlled flow between processes, such as checking for errors, checking for valid input
 - rather than plugin determining result file (.wav), should be based on Process step number
 - add configuration dialogs for all plugins
 - re-add Julian, configure Julian properly
@@ -6,4 +7,4 @@
 - remove FreeTTS' need for silly swapped overriden runApplication() through redesign on mApplicationLocation and configure()
 - change dotNetSpeech to dotNetSpeak before people have a grammatical cow?
 - icons?
-- investigate need for seperate PluginShared DLL3
+- investigate need for seperate PluginShared DLL
