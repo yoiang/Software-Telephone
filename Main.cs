@@ -35,23 +35,26 @@ namespace SoftwareTelephone
             {
                 string AssemblyName = System.IO.Path.GetFileNameWithoutExtension(pluginFiles[i]);
 
-                try
+                System.Reflection.Assembly ass = null;
+                ass = System.Reflection.Assembly.Load(AssemblyName);
+                List<Type> availableTypes = new List<Type>(ass.GetTypes());
+                foreach (Type availableType in availableTypes)
                 {
-                    System.Reflection.Assembly ass = null;
-                    ass = System.Reflection.Assembly.Load(AssemblyName);
-                    List<Type> availableTypes = new List<Type>(ass.GetTypes());
-                    foreach (Type availableType in availableTypes)
+                    if (!availableType.IsAbstract)
                     {
                         List<Type> InterfaceTypes = new List<Type>(availableType.GetInterfaces());
                         if (InterfaceTypes.Contains(typeof(IPlugin)))
                         {
-                            mPlugins.Add((IPlugin)Activator.CreateInstance(availableType));
+                            try
+                            {
+                                mPlugins.Add((IPlugin)Activator.CreateInstance(availableType));
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -114,21 +117,23 @@ namespace SoftwareTelephone
                 Input = StartWithText.Text;
             }
 
-            ResultBox.Text += Input;
             foreach (IPlugin Process in ProcessList.Items)
             {
-                ResultBox.Text += " -> " + Process.ToString();
+                ResultBox.Text += Process.ToString();
 
                 Process.Input = Input;
 
-                TempLog.Text += "\n" + Process.Output;
                 if (Process.getOutputType() == "Wav")
                 {
-                    ResultBox.Text += "\nfile://" + System.IO.Directory.GetCurrentDirectory() + "\\" + Process.Output;
+                    string Path = System.IO.Directory.GetCurrentDirectory() + "/" + Process.Output;
+                    Path = Path.Replace("\\", "/");
+                    ResultBox.Text += " -> ";
+                    ResultBox.Text += "file:///" + Path + "\n";
                 }
                 else if (Process.getOutputType() == "Text")
                 {
-                    ResultBox.Text += "\n" + Process.Output;
+                    ResultBox.Text += " -> ";
+                    ResultBox.Text += Process.Output + "\n";
                 }
 
                 Input = Process.Output;
@@ -155,7 +160,7 @@ namespace SoftwareTelephone
             }
 
             SelectPlugin SelectPlugin = new SelectPlugin();
-            foreach ( IPlugin Plugin in mPlugins )
+            foreach (IPlugin Plugin in mPlugins)
             {
                 if (Plugin.getInputType() == matchInput)
                 {
@@ -177,6 +182,11 @@ namespace SoftwareTelephone
             {
                 ProcessList.Items.RemoveAt(ProcessList.Items.Count - 1);
             }
+        }
+
+        private void ResultBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
         }
     }
 }
