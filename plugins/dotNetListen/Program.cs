@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Speech.Recognition;
+using System.Windows.Forms;
 
 namespace dotNetListen
 {
@@ -24,6 +25,7 @@ namespace dotNetListen
 
         public void configure(SoftwareTelephone.IConfig Config)
         {
+            configure(Config, false);
         }
         public void configure(SoftwareTelephone.IConfig Config, bool forceReconfigure)
         {
@@ -31,17 +33,20 @@ namespace dotNetListen
 
         protected void decode()
         {
-            SpeechRecognitionEngine SpeechRecognitionEngine = new SpeechRecognitionEngine();
-            DictationGrammar DictationGrammer = new DictationGrammar();
-            SpeechRecognitionEngine.LoadGrammar(DictationGrammer);
+            try
+            {
+                SpeechRecognitionEngine SpeechRecognitionEngine = new SpeechRecognitionEngine();
+                DictationGrammar DictationGrammer = new DictationGrammar();
+                SpeechRecognitionEngine.LoadGrammar(DictationGrammer);
 
-            SpeechRecognitionEngine.SetInputToWaveFile(Input);
-            RecognitionResult Result = SpeechRecognitionEngine.Recognize();
-            mOutput = Result.Text;
+                SpeechRecognitionEngine.SetInputToWaveFile(Input);
+                RecognitionResult Result = SpeechRecognitionEngine.Recognize();
+                mOutput = Result.Text;
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
         }
-    }
-
-    public class Program
-    {
     }
 }
