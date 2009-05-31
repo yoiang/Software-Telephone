@@ -51,9 +51,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PluginShared\PluginShared.csproj">
-      <Project>{ABBFBD77-FC4E-4E3E-A13D-754C953195C6}</Project>
-      <Name>PluginShared</Name>
+    <ProjectReference Include="..\..\SoftwareTelephone.csproj">
+      <Project>{DFB23274-F50E-41D3-A332-2E70266A02C9}</Project>
+      <Name>SoftwareTelephone</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

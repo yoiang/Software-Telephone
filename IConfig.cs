@@ -5,6 +5,12 @@ using System.Text;
 
 namespace SoftwareTelephone
 {
+    public interface IConfig
+    {
+        string getSavedConfigurationInformation(string ForWhat);
+        void setSavedConfigurationInformation(string ForWhat, string Value);
+    }
+
     internal class Config : IConfig
     {
         Properties.Settings mSettings;

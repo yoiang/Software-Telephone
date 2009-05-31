@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
+    <Compile Include="IConfig.cs" />
+    <Compile Include="IPlugin.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +92,6 @@
       <DependentUpon>SelectPlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="TextToSpeech.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="plugins\PluginShared\PluginShared.csproj">
-      <Project>{ABBFBD77-FC4E-4E3E-A13D-754C953195C6}</Project>
-      <Name>PluginShared</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -66,10 +66,4 @@ namespace SoftwareTelephone
         }
         abstract protected string buildParameters(string Input);
     }
-
-    public interface IConfig
-    {
-        string getSavedConfigurationInformation(string ForWhat);
-        void setSavedConfigurationInformation(string ForWhat, string Value);
-    }
 }
