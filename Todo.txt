@@ -7,4 +7,3 @@
 - remove FreeTTS' need for silly swapped overriden runApplication() through redesign on mApplicationLocation and configure()
 - change dotNetSpeech to dotNetSpeak before people have a grammatical cow?
 - icons?
-- investigate need for seperate PluginShared DLL
