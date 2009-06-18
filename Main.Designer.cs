@@ -176,10 +176,10 @@
             this.ResultBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ResultBox.Location = new System.Drawing.Point(173, 134);
             this.ResultBox.Name = "ResultBox";
-            this.ResultBox.ReadOnly = true;
             this.ResultBox.Size = new System.Drawing.Size(300, 302);
             this.ResultBox.TabIndex = 8;
             this.ResultBox.Text = "";
+            this.ResultBox.WordWrap = false;
             this.ResultBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.ResultBox_LinkClicked);
             // 
             // Main
