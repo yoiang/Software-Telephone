@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FreeTTS")]
+[assembly: AssemblyTitle("SoftwareTelephone FreeTTS Plugin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("FreeTTS")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCompany("Stupid Shit Software")]
+[assembly: AssemblyProduct("SoftwareTelephone")]
+[assembly: AssemblyCopyright("\"Use All You Want But I'd Love To Hear From You\" license")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

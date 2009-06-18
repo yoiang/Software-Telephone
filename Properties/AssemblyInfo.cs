@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SoftwareTelephone")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Stupid Shit Software")]
 [assembly: AssemblyProduct("SoftwareTelephone")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCopyright("\"Use All You Want But I'd Love To Hear From You\" license")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
